@@ -55,12 +55,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\202106281950256_InitialVehicle.cs" />
+    <Compile Include="Migrations\202106281950256_InitialVehicle.Designer.cs">
+      <DependentUpon>202106281950256_InitialVehicle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106281954039_ChangedValidation.cs" />
+    <Compile Include="Migrations\202106281954039_ChangedValidation.Designer.cs">
+      <DependentUpon>202106281954039_ChangedValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106282023506_VehicleProperty.cs" />
+    <Compile Include="Migrations\202106282023506_VehicleProperty.Designer.cs">
+      <DependentUpon>202106282023506_VehicleProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vehicle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202106281950256_InitialVehicle.resx">
+      <DependentUpon>202106281950256_InitialVehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106281954039_ChangedValidation.resx">
+      <DependentUpon>202106281954039_ChangedValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106282023506_VehicleProperty.resx">
+      <DependentUpon>202106282023506_VehicleProperty.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

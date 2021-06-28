@@ -5,22 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MaintenanceTracker.Data
+namespace MaintenanceTracker.Models
 {
-    public class Vehicle
+    public class VehicleCreate
     {
-        [Key]
-        public int VehicleId { get; set; }
 
         [Required]
         public int Year { get; set; }
 
         [Required]
-        [MaxLength(50, ErrorMessage ="Max 50 characters")]
+        [MaxLength(50, ErrorMessage = "Max 50 characters")]
         public string Make { get; set; }
 
         [Required]
-        [MaxLength(50, ErrorMessage ="Max 50 characters")]
+        [MaxLength(50, ErrorMessage = "Max 50 characters")]
         [Display(Name ="Model")]
         public string VehicleModel { get; set; }
 
@@ -28,12 +26,10 @@ namespace MaintenanceTracker.Data
         public double Displacement { get; set; }
 
         [Required]
+        [Display(Name ="Automatic Transmission?")]
         public bool IsAutomatic { get; set; }
 
         [Required]
         public double Odometer { get; set; }
-
-        //public virtual List<FuelUp> 
-        //public virtual List<Maintenance>
     }
 }

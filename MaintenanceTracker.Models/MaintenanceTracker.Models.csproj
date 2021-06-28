@@ -55,6 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VehicleCreate.cs" />
+    <Compile Include="VehicleListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

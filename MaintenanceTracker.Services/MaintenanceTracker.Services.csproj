@@ -55,10 +55,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VehicleService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MaintenanceTracker.Data\MaintenanceTracker.Data.csproj">
+      <Project>{c88dc05e-e896-44b3-bb77-15a1480bf5db}</Project>
+      <Name>MaintenanceTracker.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MaintenanceTracker.Models\MaintenanceTracker.Models.csproj">
+      <Project>{7b2a5a33-8a6b-45d8-8662-299ab1da6eb8}</Project>
+      <Name>MaintenanceTracker.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
