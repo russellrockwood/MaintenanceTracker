@@ -33,10 +33,17 @@ namespace MaintenanceTrackerMVC.Controllers
             {
                 return View(model);
             }
-            var service = new VehicleService();
-            service.CreateVehicle(model);
 
-            return RedirectToAction("Index");
+            var service = new VehicleService();
+            if (service.CreateVehicle(model))
+            {
+                TempData["SaveResult"] = "Vehicle Succesfully Added";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Vehicle could not be created");
+
+            return View(model);
         }
     }
 }
