@@ -34,6 +34,7 @@ namespace MaintenanceTrackerMVC.Data
         }
 
         public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<FuelUp> FuelUps { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

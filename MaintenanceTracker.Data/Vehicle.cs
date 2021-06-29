@@ -33,7 +33,8 @@ namespace MaintenanceTracker.Data
         [Required]
         public double Odometer { get; set; }
 
-        //public virtual List<FuelUp> 
-        //public virtual List<Maintenance>
+        //public virtual List<FuelUp> FuelUps { get; set; }
+        //public virtual List<Maintenance> MaintenanceRecord { get; set; }
+        
     }
 }

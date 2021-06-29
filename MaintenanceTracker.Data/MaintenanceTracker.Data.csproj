@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FuelUp.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\202106281950256_InitialVehicle.cs" />
     <Compile Include="Migrations\202106281950256_InitialVehicle.Designer.cs">
@@ -66,6 +67,10 @@
     <Compile Include="Migrations\202106282023506_VehicleProperty.cs" />
     <Compile Include="Migrations\202106282023506_VehicleProperty.Designer.cs">
       <DependentUpon>202106282023506_VehicleProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106292100424_InitialFuelUp.cs" />
+    <Compile Include="Migrations\202106292100424_InitialFuelUp.Designer.cs">
+      <DependentUpon>202106292100424_InitialFuelUp.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106282023506_VehicleProperty.resx">
       <DependentUpon>202106282023506_VehicleProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106292100424_InitialFuelUp.resx">
+      <DependentUpon>202106292100424_InitialFuelUp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
