@@ -73,5 +73,40 @@ namespace MaintenanceTracker.Services
                     };
             }
         }
+
+        public bool UpdateVehicle(VehicleEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Vehicles
+                        .Single(e => e.VehicleId == model.VehicleId);
+                
+                entity.Year = model.Year;
+                entity.Make = model.Make;
+                entity.VehicleModel = model.VehicleModel;
+                entity.Displacement = model.Displacement;
+                entity.IsAutomatic = model.IsAutomatic;
+                entity.Odometer = model.Odometer;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteVehicle(int vehicleId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Vehicles
+                        .Single(e => e.VehicleId == vehicleId);
+
+                ctx.Vehicles.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
