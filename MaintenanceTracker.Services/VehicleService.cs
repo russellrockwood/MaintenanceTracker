@@ -51,5 +51,27 @@ namespace MaintenanceTracker.Services
                 return query.ToArray();
             }
         }
+
+        public VehicleDetail GetVehicleById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Vehicles
+                        .Single(e => e.VehicleId == id);
+                return
+                    new VehicleDetail
+                    {
+                        VehicleId = entity.VehicleId,
+                        Year = entity.Year,
+                        Make = entity.Make,
+                        VehicleModel = entity.VehicleModel,
+                        Displacement = entity.Displacement,
+                        IsAutomatic = entity.IsAutomatic,
+                        Odometer = entity.Odometer
+                    };
+            }
+        }
     }
 }

@@ -45,5 +45,13 @@ namespace MaintenanceTrackerMVC.Controllers
 
             return View(model);
         }
+
+        public ActionResult Details(int id)
+        {
+            var service = new VehicleService();
+            var model = service.GetVehicleById(id);
+
+            return View(model);
+        }
     }
 }
