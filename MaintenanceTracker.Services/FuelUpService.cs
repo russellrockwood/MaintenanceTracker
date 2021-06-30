@@ -41,6 +41,7 @@ namespace MaintenanceTracker.Services
                             e =>
                             new FuelUpListItem 
                             { 
+                                FuelUpId = e.FuelUpId,
                                 VehicleId = e.VehicleId,
                                 Price = e.Price,
                                 Gallons = e.Gallons,
@@ -64,10 +65,11 @@ namespace MaintenanceTracker.Services
 
                 return new FuelUpDetail
                 {
+                    FuelUpId = entity.FuelUpId,
                     VehicleId = entity.VehicleId,
                     Price = entity.Price,
                     Miles = entity.Miles,
-                    Gallons = entity.Miles,
+                    Gallons = entity.Gallons,
                     CreatedUtc = entity.CreatedUtc,
                     ModifiedUtc = entity.ModifiedUtc,
                     Mpg = entity.Mpg
@@ -88,6 +90,7 @@ namespace MaintenanceTracker.Services
                 entity.Price = model.Price;
                 entity.Miles = model.Miles;
                 entity.Gallons = model.Gallons;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
                 return ctx.SaveChanges() == 1;
             }

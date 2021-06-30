@@ -34,7 +34,7 @@ namespace MaintenanceTrackerMVC.Controllers
 
             if (service.CreateFuelUp(model))
             {
-                //TempData["SaveResult"] = "Fuel up created";
+                TempData["SaveResult"] = "Fuel up created";
                 return RedirectToAction("Index");
             }
 
@@ -54,6 +54,7 @@ namespace MaintenanceTrackerMVC.Controllers
             var model =
                 new FuelUpEdit
                 {
+                    FuelUpId = detail.FuelUpId,
                     VehicleId = detail.VehicleId,
                     Price = detail.Price,
                     Miles = detail.Miles,
@@ -80,7 +81,7 @@ namespace MaintenanceTrackerMVC.Controllers
 
             if (service.UpdateFuelUp(model))
             {
-                //TempData["SaveResult"] = "Your note was updated.";
+                TempData["SaveResult"] = "Your note was updated.";
                 return RedirectToAction("Index");
             }
 
@@ -101,7 +102,7 @@ namespace MaintenanceTrackerMVC.Controllers
         public ActionResult DeleteFuelUp(int id)
         {
             new FuelUpService().RemoveFuelUp(id);
-            //TempData["SaveResult"] = "Fuel stop removed";
+            TempData["SaveResult"] = "Fuel stop removed";
             return RedirectToAction("Index");
         }
     }

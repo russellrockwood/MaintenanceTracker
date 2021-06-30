@@ -239,10 +239,14 @@
     <Content Include="Views\Vehicle\Index.cshtml" />
     <Content Include="Views\Vehicle\Create.cshtml" />
     <Content Include="Views\Vehicle\Details.cshtml" />
-    <Content Include="Views\Vehicle\Edit.cshtml" />
     <Content Include="Views\Vehicle\Delete.cshtml" />
-    <Content Include="Views\FuelUp\Index.cshtml" />
     <Content Include="Views\FuelUp\Create.cshtml" />
+    <Content Include="Views\FuelUp\Details.cshtml" />
+    <Content Include="Views\FuelUp\Index.cshtml" />
+    <Content Include="Views\FuelUp\Edit.cshtml" />
+    <Content Include="Views\FuelUp\Delete.cshtml" />
+    <Content Include="Views\Vehicle\Edit.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTimeOffset.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
