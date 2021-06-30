@@ -17,11 +17,11 @@ namespace MaintenanceTracker.Models.FuelUp
 
         public double Gallons { get; set; }
 
-        [Display(Name ="Created")]
+        [Display(Name ="Date")]
         public DateTimeOffset CreatedUtc { get; set; }
 
         [Display(Name ="Modified")]
-        public DateTimeOffset ModifiedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
 
         public double Mpg
         {
