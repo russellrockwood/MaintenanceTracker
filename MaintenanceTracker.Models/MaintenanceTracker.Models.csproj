@@ -58,6 +58,10 @@
     <Compile Include="FuelUp\FuelUpEdit.cs" />
     <Compile Include="FuelUp\FuelUpListItem.cs" />
     <Compile Include="FuelUp\FuelUpCreate.cs" />
+    <Compile Include="VehicleMaintenance\VehicleMaintenanceCreate.cs" />
+    <Compile Include="VehicleMaintenance\VehicleMaintenanceDetail.cs" />
+    <Compile Include="VehicleMaintenance\VehicleMaintenanceEdit.cs" />
+    <Compile Include="VehicleMaintenance\VehicleMaintenanceListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VehicleCreate.cs" />
     <Compile Include="VehicleDetail.cs" />
@@ -68,8 +72,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Maintenance\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
