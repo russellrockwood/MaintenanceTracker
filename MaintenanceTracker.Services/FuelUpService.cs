@@ -52,5 +52,59 @@ namespace MaintenanceTracker.Services
                 return query.ToArray();
             }
         }
+
+        public FuelUpDetail GetFuelUpById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .FuelUps
+                        .Single(e => e.FuelUpId == id);
+
+                return new FuelUpDetail
+                {
+                    VehicleId = entity.VehicleId,
+                    Price = entity.Price,
+                    Miles = entity.Miles,
+                    Gallons = entity.Miles,
+                    CreatedUtc = entity.CreatedUtc,
+                    ModifiedUtc = entity.ModifiedUtc,
+                    Mpg = entity.Mpg
+                };
+            }
+        }
+
+        public bool UpdateFuelUp(FuelUpEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .FuelUps
+                        .Single(e => e.FuelUpId == model.FuelUpId);
+
+                entity.VehicleId = model.VehicleId;
+                entity.Price = model.Price;
+                entity.Miles = model.Miles;
+                entity.Gallons = model.Gallons;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool RemoveFuelUp(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .FuelUps
+                        .Single(e => e.FuelUpId == id);
+
+                ctx.FuelUps.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

@@ -23,12 +23,7 @@ namespace MaintenanceTracker.Models.FuelUp
         [Display(Name ="Modified")]
         public DateTimeOffset? ModifiedUtc { get; set; }
 
-        public double Mpg
-        {
-            get
-            {
-                return Miles / Gallons;
-            }
-        }
+        public double Mpg { get; set; }
+        
     }
 }
