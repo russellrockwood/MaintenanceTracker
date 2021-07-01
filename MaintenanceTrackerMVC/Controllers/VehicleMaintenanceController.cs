@@ -36,11 +36,17 @@ namespace MaintenanceTrackerMVC.Controllers
 
             if (service.CreateVehicleMaintenance(model))
             {
-                TempData["SaveResult"] = "Vehicle Maintenance record created";
+                TempData["SaveResult"] = "Vehicle Maintenance Added";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Error adding maintenance record");
+            ModelState.AddModelError("", "Error Adding Maintenance Item");
+            return View(model);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var model = new VehicleMaintenanceService().GetVehicleMaintenanceById(id);
             return View(model);
         }
 
@@ -50,6 +56,7 @@ namespace MaintenanceTrackerMVC.Controllers
 
             var model = new VehicleMaintenanceEdit
             {
+                VehicleMaintenanceId = detail.VehicleMaintenanceId,
                 VehicleId = detail.VehicleId,
                 MaintenanceName = detail.MaintenanceName,
                 ShopName = detail.ShopName,
@@ -95,8 +102,8 @@ namespace MaintenanceTrackerMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteVehicleMaintenance(int id)
         {
-            new FuelUpService().RemoveFuelUp(id);
-            TempData["SaveResult"] = "Vehicle Maintenance Removed";
+            new VehicleMaintenanceService().RemoveVehicleMaintenance(id);
+            TempData["SaveResult"] = "Vehicle Maintenance Item Removed";
             return RedirectToAction("Index");
         }
     }

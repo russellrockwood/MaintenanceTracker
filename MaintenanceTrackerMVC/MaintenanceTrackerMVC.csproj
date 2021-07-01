@@ -250,6 +250,9 @@
     <Content Include="Views\Shared\DisplayTemplates\DateTimeOffset.cshtml" />
     <Content Include="Views\VehicleMaintenance\Index.cshtml" />
     <Content Include="Views\VehicleMaintenance\Create.cshtml" />
+    <Content Include="Views\VehicleMaintenance\Details.cshtml" />
+    <Content Include="Views\VehicleMaintenance\Delete.cshtml" />
+    <Content Include="Views\VehicleMaintenance\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
