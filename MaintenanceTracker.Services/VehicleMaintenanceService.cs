@@ -48,5 +48,56 @@ namespace MaintenanceTracker.Services
                 return query.ToList();
             }
         }
+
+        public VehicleMaintenanceDetail GetVehicleMaintenanceById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .VehicleMaintenanceDbSet
+                        .Single(e => e.VehicleMaintenanceId == id);
+
+                return new VehicleMaintenanceDetail
+                {
+                    VehicleMaintenanceId = entity.VehicleMaintenanceId,
+                    VehicleId = entity.VehicleId,
+                    MaintenanceName = entity.MaintenanceName,
+                    ShopName = entity.ShopName,
+                    Price = entity.Price,
+                    Notes = entity.Notes
+                };
+            }
+        }
+
+        public bool UpdateVehicleMaintenance(VehicleMaintenanceEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .VehicleMaintenanceDbSet
+                        .Single(e => e.VehicleMaintenanceId == model.VehicleMaintenanceId);
+
+                entity.VehicleId = model.VehicleId;
+                entity.MaintenanceName = model.MaintenanceName;
+                entity.ShopName = model.ShopName;
+                entity.Price = model.Price;
+                entity.Notes = model.Notes;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool RemoveVehicleMaintenance(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.VehicleMaintenanceDbSet.Single(e => e.VehicleMaintenanceId == id);
+
+                ctx.VehicleMaintenanceDbSet.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
