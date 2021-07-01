@@ -81,7 +81,7 @@ namespace MaintenanceTrackerMVC.Controllers
 
             if (service.UpdateFuelUp(model))
             {
-                TempData["SaveResult"] = "Your note was updated.";
+                TempData["SaveResult"] = "Your Fuel Stop Was Updated.";
                 return RedirectToAction("Index");
             }
 
