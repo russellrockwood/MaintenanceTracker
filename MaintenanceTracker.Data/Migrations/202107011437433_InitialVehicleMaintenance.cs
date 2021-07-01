@@ -3,10 +3,40 @@ namespace MaintenanceTracker.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialVehicle : DbMigration
+    public partial class InitialVehicleMaintenance : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.FuelUp",
+                c => new
+                    {
+                        FuelUpId = c.Int(nullable: false, identity: true),
+                        VehicleId = c.Int(nullable: false),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Miles = c.Double(nullable: false),
+                        Gallons = c.Double(nullable: false),
+                        CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),
+                        ModifiedUtc = c.DateTimeOffset(precision: 7),
+                    })
+                .PrimaryKey(t => t.FuelUpId)
+                .ForeignKey("dbo.Vehicle", t => t.VehicleId, cascadeDelete: true)
+                .Index(t => t.VehicleId);
+            
+            CreateTable(
+                "dbo.Vehicle",
+                c => new
+                    {
+                        VehicleId = c.Int(nullable: false, identity: true),
+                        Year = c.Int(nullable: false),
+                        Make = c.String(nullable: false, maxLength: 50),
+                        VehicleModel = c.String(nullable: false, maxLength: 50),
+                        Displacement = c.Double(nullable: false),
+                        IsAutomatic = c.Boolean(nullable: false),
+                        Odometer = c.Double(nullable: false),
+                    })
+                .PrimaryKey(t => t.VehicleId);
+            
             CreateTable(
                 "dbo.IdentityRole",
                 c => new
@@ -77,20 +107,6 @@ namespace MaintenanceTracker.Data.Migrations
                 .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
                 .Index(t => t.ApplicationUser_Id);
             
-            CreateTable(
-                "dbo.Vehicle",
-                c => new
-                    {
-                        VehicleId = c.Int(nullable: false, identity: true),
-                        Year = c.Int(nullable: false),
-                        Make = c.String(nullable: false, maxLength: 50),
-                        Model = c.String(nullable: false, maxLength: 50),
-                        Displacement = c.Double(nullable: false),
-                        IsAutomatic = c.Boolean(nullable: false),
-                        Odometer = c.Double(nullable: false),
-                    })
-                .PrimaryKey(t => t.VehicleId);
-            
         }
         
         public override void Down()
@@ -99,16 +115,19 @@ namespace MaintenanceTracker.Data.Migrations
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
+            DropForeignKey("dbo.FuelUp", "VehicleId", "dbo.Vehicle");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
-            DropTable("dbo.Vehicle");
+            DropIndex("dbo.FuelUp", new[] { "VehicleId" });
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
+            DropTable("dbo.Vehicle");
+            DropTable("dbo.FuelUp");
         }
     }
 }

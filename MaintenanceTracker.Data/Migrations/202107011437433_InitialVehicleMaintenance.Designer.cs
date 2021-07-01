@@ -7,13 +7,13 @@ namespace MaintenanceTracker.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class ChangedValidation : IMigrationMetadata
+    public sealed partial class InitialVehicleMaintenance : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangedValidation));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialVehicleMaintenance));
         
         string IMigrationMetadata.Id
         {
-            get { return "202106281954039_ChangedValidation"; }
+            get { return "202107011437433_InitialVehicleMaintenance"; }
         }
         
         string IMigrationMetadata.Source

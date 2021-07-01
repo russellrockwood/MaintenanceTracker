@@ -56,21 +56,13 @@
   <ItemGroup>
     <Compile Include="FuelUp.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202106281950256_InitialVehicle.cs" />
-    <Compile Include="Migrations\202106281950256_InitialVehicle.Designer.cs">
-      <DependentUpon>202106281950256_InitialVehicle.cs</DependentUpon>
+    <Compile Include="Migrations\202107011437433_InitialVehicleMaintenance.cs" />
+    <Compile Include="Migrations\202107011437433_InitialVehicleMaintenance.Designer.cs">
+      <DependentUpon>202107011437433_InitialVehicleMaintenance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202106281954039_ChangedValidation.cs" />
-    <Compile Include="Migrations\202106281954039_ChangedValidation.Designer.cs">
-      <DependentUpon>202106281954039_ChangedValidation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106282023506_VehicleProperty.cs" />
-    <Compile Include="Migrations\202106282023506_VehicleProperty.Designer.cs">
-      <DependentUpon>202106282023506_VehicleProperty.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106292100424_InitialFuelUp.cs" />
-    <Compile Include="Migrations\202106292100424_InitialFuelUp.Designer.cs">
-      <DependentUpon>202106292100424_InitialFuelUp.cs</DependentUpon>
+    <Compile Include="Migrations\202107011446120_ForgotDbSet.cs" />
+    <Compile Include="Migrations\202107011446120_ForgotDbSet.Designer.cs">
+      <DependentUpon>202107011446120_ForgotDbSet.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,17 +74,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202106281950256_InitialVehicle.resx">
-      <DependentUpon>202106281950256_InitialVehicle.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107011437433_InitialVehicleMaintenance.resx">
+      <DependentUpon>202107011437433_InitialVehicleMaintenance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106281954039_ChangedValidation.resx">
-      <DependentUpon>202106281954039_ChangedValidation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106282023506_VehicleProperty.resx">
-      <DependentUpon>202106282023506_VehicleProperty.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106292100424_InitialFuelUp.resx">
-      <DependentUpon>202106292100424_InitialFuelUp.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107011446120_ForgotDbSet.resx">
+      <DependentUpon>202107011446120_ForgotDbSet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

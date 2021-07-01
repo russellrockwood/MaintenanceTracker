@@ -7,13 +7,13 @@ namespace MaintenanceTracker.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class InitialFuelUp : IMigrationMetadata
+    public sealed partial class ForgotDbSet : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialFuelUp));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ForgotDbSet));
         
         string IMigrationMetadata.Id
         {
-            get { return "202106292100424_InitialFuelUp"; }
+            get { return "202107011446120_ForgotDbSet"; }
         }
         
         string IMigrationMetadata.Source
