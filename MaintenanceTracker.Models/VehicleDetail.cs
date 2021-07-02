@@ -19,5 +19,10 @@ namespace MaintenanceTracker.Models
         public double Displacement { get; set; }
         public bool IsAutomatic { get; set; }
         public double Odometer { get; set; }
+
+        public double FuelEconomy { get; set; }
+
+        //public virtual List<FuelUp.FuelUpDetail> FuelUps { get; set; }
+        //public virtual List<VehicleMaintenance.VehicleMaintenanceDetail> MaintenanceRecord { get; set; }
     }
 }

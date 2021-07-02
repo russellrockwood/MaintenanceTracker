@@ -33,7 +33,7 @@ namespace MaintenanceTracker.Data
         { 
             get
             {
-                return Miles / Gallons;
+                return Math.Round(Miles / Gallons, 2);
             }
         }
 

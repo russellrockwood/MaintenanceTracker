@@ -69,7 +69,8 @@ namespace MaintenanceTracker.Services
                         VehicleModel = entity.VehicleModel,
                         Displacement = entity.Displacement,
                         IsAutomatic = entity.IsAutomatic,
-                        Odometer = entity.Odometer
+                        Odometer = entity.Odometer,
+                        FuelEconomy = entity.FuelEconomy
                     };
             }
         }

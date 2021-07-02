@@ -33,8 +33,22 @@ namespace MaintenanceTracker.Data
         [Required]
         public double Odometer { get; set; }
 
-        //public virtual List<FuelUp> FuelUps { get; set; }
-        //public virtual List<Maintenance> MaintenanceRecord { get; set; }
+        public double FuelEconomy
+        {
+            get
+            {
+                double combinedMpg = 0;
+                foreach (var item in FuelUps)
+                {
+                    combinedMpg += item.Mpg;
+                }
+
+                return combinedMpg / FuelUps.Count;
+            }
+        }
+
+        public virtual List<FuelUp> FuelUps { get; set; }
+        public virtual List<VehicleMaintenance> MaintenanceRecord { get; set; }
         
     }
 }
