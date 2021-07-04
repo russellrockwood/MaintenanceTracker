@@ -50,14 +50,31 @@
             @Html.DisplayFor(model => model.Displacement)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.IsAutomatic)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.IsAutomatic)
 
+        </dd>*@
+
+        <dt>
+            <span>Transmission</span>
+        </dt>
+
+        <dd>
+            @if (Model.IsAutomatic)
+            {
+                <span>Automatic</span>
+            }
+            else
+            {
+                <span>Manual</span>
+            }
         </dd>
+
+
 
         <dt>
             @Html.DisplayNameFor(model => model.Odometer)
