@@ -68,6 +68,10 @@
     <Compile Include="Migrations\202107021444438_FuelEconomy.Designer.cs">
       <DependentUpon>202107021444438_FuelEconomy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107052302471_UserIdentity.cs" />
+    <Compile Include="Migrations\202107052302471_UserIdentity.Designer.cs">
+      <DependentUpon>202107052302471_UserIdentity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vehicle.cs" />
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107021444438_FuelEconomy.resx">
       <DependentUpon>202107021444438_FuelEconomy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107052302471_UserIdentity.resx">
+      <DependentUpon>202107052302471_UserIdentity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

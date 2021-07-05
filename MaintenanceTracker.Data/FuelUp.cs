@@ -13,6 +13,9 @@ namespace MaintenanceTracker.Data
         public int FuelUpId { get; set; }
 
         [Required]
+        public Guid OwnerId { get; set; }
+
+        [Required]
         public int VehicleId { get; set; }
         public virtual Vehicle Vehicle { get; set; }
 

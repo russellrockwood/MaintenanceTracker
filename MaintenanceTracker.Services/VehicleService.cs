@@ -11,11 +11,19 @@ namespace MaintenanceTracker.Services
 {
     public class VehicleService
     {
+        private readonly Guid _userId;
+
+        public VehicleService(Guid userId)
+        {
+            _userId = userId;
+        }
+
         public bool CreateVehicle(VehicleCreate model)
         {
             var entity =
                 new Vehicle()
                 {
+                    OwnerId = _userId,
                     Year = model.Year,
                     Make = model.Make,
                     VehicleModel = model.VehicleModel,
@@ -37,6 +45,7 @@ namespace MaintenanceTracker.Services
                 var query =
                     ctx
                         .Vehicles
+                        .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
                                 new VehicleListItem
@@ -59,7 +68,7 @@ namespace MaintenanceTracker.Services
                 var entity =
                     ctx
                         .Vehicles
-                        .Single(e => e.VehicleId == id);
+                        .Single(e => e.VehicleId == id && e.OwnerId == _userId);
                 return
                     new VehicleDetail
                     {
@@ -82,7 +91,7 @@ namespace MaintenanceTracker.Services
                 var entity =
                     ctx
                         .Vehicles
-                        .Single(e => e.VehicleId == model.VehicleId);
+                        .Single(e => e.VehicleId == model.VehicleId && e.OwnerId == _userId);
                 
                 entity.Year = model.Year;
                 entity.Make = model.Make;
@@ -102,7 +111,7 @@ namespace MaintenanceTracker.Services
                 var entity =
                     ctx
                         .Vehicles
-                        .Single(e => e.VehicleId == vehicleId);
+                        .Single(e => e.VehicleId == vehicleId && e.OwnerId == _userId);
 
                 ctx.Vehicles.Remove(entity);
 

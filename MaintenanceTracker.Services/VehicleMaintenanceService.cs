@@ -11,11 +11,19 @@ namespace MaintenanceTracker.Services
 {
     public class VehicleMaintenanceService
     {
+        private readonly Guid _userId;
+
+        public VehicleMaintenanceService(Guid userId)
+        {
+            _userId = userId;
+        }
+
         public bool CreateVehicleMaintenance(VehicleMaintenanceCreate model)
         {
             var entity =
                 new VehicleMaintenance
                 {
+                    OwnerId = _userId,
                     VehicleId = model.VehicleId,
                     MaintenanceName = model.MaintenanceName,
                     ShopName = model.ShopName,
@@ -36,6 +44,7 @@ namespace MaintenanceTracker.Services
                 var query =
                     ctx
                         .VehicleMaintenanceDbSet
+                        .Where(e => e.OwnerId == _userId)
                         .Select(e =>
                             new VehicleMaintenanceListItem
                             {
@@ -56,7 +65,7 @@ namespace MaintenanceTracker.Services
                 var entity =
                     ctx
                         .VehicleMaintenanceDbSet
-                        .Single(e => e.VehicleMaintenanceId == id);
+                        .Single(e => e.VehicleMaintenanceId == id && e.OwnerId == _userId);
 
                 return new VehicleMaintenanceDetail
                 {
@@ -77,7 +86,7 @@ namespace MaintenanceTracker.Services
                 var entity =
                     ctx
                         .VehicleMaintenanceDbSet
-                        .Single(e => e.VehicleMaintenanceId == model.VehicleMaintenanceId);
+                        .Single(e => e.VehicleMaintenanceId == model.VehicleMaintenanceId && e.OwnerId == _userId);
 
                 entity.VehicleId = model.VehicleId;
                 entity.MaintenanceName = model.MaintenanceName;
@@ -93,7 +102,10 @@ namespace MaintenanceTracker.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.VehicleMaintenanceDbSet.Single(e => e.VehicleMaintenanceId == id);
+                var entity = 
+                    ctx
+                        .VehicleMaintenanceDbSet
+                        .Single(e => e.VehicleMaintenanceId == id && e.OwnerId == _userId);
 
                 ctx.VehicleMaintenanceDbSet.Remove(entity);
                 return ctx.SaveChanges() == 1;

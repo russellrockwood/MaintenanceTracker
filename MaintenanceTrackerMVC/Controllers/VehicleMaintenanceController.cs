@@ -1,5 +1,6 @@
 ﻿using MaintenanceTracker.Models.VehicleMaintenance;
 using MaintenanceTracker.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +9,19 @@ using System.Web.Mvc;
 
 namespace MaintenanceTrackerMVC.Controllers
 {
+    [Authorize]
     public class VehicleMaintenanceController : Controller
     {
-        [Authorize]
+        private VehicleMaintenanceService CreateVehicleService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new VehicleMaintenanceService(userId);
+            return service;
+        }
         // GET: VehicleMaintenance
         public ActionResult Index()
         {
-            var vehicleMaintenanceList = new VehicleMaintenanceService().GetVehicleMaintenanceList();
+            var vehicleMaintenanceList = CreateVehicleService().GetVehicleMaintenanceList();
             return View(vehicleMaintenanceList);
         }
 
@@ -32,7 +39,7 @@ namespace MaintenanceTrackerMVC.Controllers
                 return View(model);
             }
 
-            var service = new VehicleMaintenanceService();
+            var service = CreateVehicleService();
 
             if (service.CreateVehicleMaintenance(model))
             {
@@ -46,13 +53,13 @@ namespace MaintenanceTrackerMVC.Controllers
 
         public ActionResult Details(int id)
         {
-            var model = new VehicleMaintenanceService().GetVehicleMaintenanceById(id);
+            var model = CreateVehicleService().GetVehicleMaintenanceById(id);
             return View(model);
         }
 
         public ActionResult Edit(int id)
         {
-            var detail = new VehicleMaintenanceService().GetVehicleMaintenanceById(id);
+            var detail = CreateVehicleService().GetVehicleMaintenanceById(id);
 
             var model = new VehicleMaintenanceEdit
             {
@@ -79,7 +86,7 @@ namespace MaintenanceTrackerMVC.Controllers
                 return View(model);
             }
 
-            var service = new VehicleMaintenanceService();
+            var service = CreateVehicleService();
 
             if (service.UpdateVehicleMaintenance(model))
             {
@@ -94,7 +101,9 @@ namespace MaintenanceTrackerMVC.Controllers
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
-            return View(new VehicleMaintenanceService().GetVehicleMaintenanceById(id));
+            var service = CreateVehicleService();
+            var model = service.GetVehicleMaintenanceById(id);
+            return View(model);
         }
 
         [HttpPost]
@@ -102,7 +111,7 @@ namespace MaintenanceTrackerMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteVehicleMaintenance(int id)
         {
-            new VehicleMaintenanceService().RemoveVehicleMaintenance(id);
+            CreateVehicleService().RemoveVehicleMaintenance(id);
             TempData["SaveResult"] = "Vehicle Maintenance Item Removed";
             return RedirectToAction("Index");
         }

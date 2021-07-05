@@ -11,11 +11,18 @@ namespace MaintenanceTracker.Services
 {
     public class FuelUpService
     {
+        private readonly Guid _userId;
+
+        public FuelUpService(Guid userId)
+        {
+            _userId = userId;
+        }
         public bool CreateFuelUp(FuelUpCreate model)
         {
             var entity =
                 new FuelUp()
                 {
+                    OwnerId = _userId,
                     VehicleId = model.VehicleId,
                     Price = model.Price,
                     Miles = model.Miles,
@@ -37,6 +44,7 @@ namespace MaintenanceTracker.Services
                 var query =
                     ctx
                         .FuelUps
+                        .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
                             new FuelUpListItem 
@@ -61,7 +69,7 @@ namespace MaintenanceTracker.Services
                 var entity =
                     ctx
                         .FuelUps
-                        .Single(e => e.FuelUpId == id);
+                        .Single(e => e.FuelUpId == id && e.OwnerId == _userId);
 
                 return new FuelUpDetail
                 {
@@ -84,7 +92,7 @@ namespace MaintenanceTracker.Services
                 var entity =
                     ctx
                         .FuelUps
-                        .Single(e => e.FuelUpId == model.FuelUpId);
+                        .Single(e => e.FuelUpId == model.FuelUpId && e.OwnerId == _userId);
 
                 entity.VehicleId = model.VehicleId;
                 entity.Price = model.Price;
@@ -103,7 +111,7 @@ namespace MaintenanceTracker.Services
                 var entity =
                     ctx
                         .FuelUps
-                        .Single(e => e.FuelUpId == id);
+                        .Single(e => e.FuelUpId == id && e.OwnerId == _userId);
 
                 ctx.FuelUps.Remove(entity);
                 return ctx.SaveChanges() == 1;

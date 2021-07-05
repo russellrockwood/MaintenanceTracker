@@ -13,6 +13,9 @@ namespace MaintenanceTracker.Data
         public int VehicleId { get; set; }
 
         [Required]
+        public Guid OwnerId { get; set; }
+
+        [Required]
         public int Year { get; set; }
 
         [Required]

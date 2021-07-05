@@ -1,5 +1,6 @@
 ﻿using MaintenanceTracker.Models.FuelUp;
 using MaintenanceTracker.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,16 @@ namespace MaintenanceTrackerMVC.Controllers
     [Authorize]
     public class FuelUpController : Controller
     {
+        private FuelUpService CreateFuelUpService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new FuelUpService(userId);
+            return service;
+        }
         // GET: FuelUp
         public ActionResult Index()
         {
-            var fuelUps = new FuelUpService().GetFuelUps();
+            var fuelUps = CreateFuelUpService().GetFuelUps();
             return View(fuelUps);
         }
 
@@ -30,7 +37,7 @@ namespace MaintenanceTrackerMVC.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            var service = new FuelUpService();
+            var service = CreateFuelUpService();
 
             if (service.CreateFuelUp(model))
             {
@@ -44,13 +51,13 @@ namespace MaintenanceTrackerMVC.Controllers
 
         public ActionResult Details(int id)
         {
-            var model = new FuelUpService().GetFuelUpById(id);
+            var model = CreateFuelUpService().GetFuelUpById(id);
             return View(model);
         }
 
         public ActionResult Edit(int id)
         {
-            var detail = new FuelUpService().GetFuelUpById(id);
+            var detail = CreateFuelUpService().GetFuelUpById(id);
             var model =
                 new FuelUpEdit
                 {
@@ -77,7 +84,7 @@ namespace MaintenanceTrackerMVC.Controllers
                 return View(model);
             }
 
-            var service = new FuelUpService();
+            var service = CreateFuelUpService();
 
             if (service.UpdateFuelUp(model))
             {
@@ -92,8 +99,8 @@ namespace MaintenanceTrackerMVC.Controllers
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
-            //var model = new FuelUpService().GetFuelUpById(id);
-            return View(new FuelUpService().GetFuelUpById(id));
+            var model = CreateFuelUpService().GetFuelUpById(id);
+            return View(model);
         }
 
         [HttpPost]
@@ -101,7 +108,7 @@ namespace MaintenanceTrackerMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteFuelUp(int id)
         {
-            new FuelUpService().RemoveFuelUp(id);
+            CreateFuelUpService().RemoveFuelUp(id);
             TempData["SaveResult"] = "Fuel stop removed";
             return RedirectToAction("Index");
         }
