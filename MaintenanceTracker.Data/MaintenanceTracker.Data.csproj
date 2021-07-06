@@ -95,5 +95,11 @@
       <DependentUpon>202107052302471_UserIdentity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MaintenanceTracker.Models\MaintenanceTracker.Models.csproj">
+      <Project>{7B2A5A33-8A6B-45D8-8662-299AB1DA6EB8}</Project>
+      <Name>MaintenanceTracker.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

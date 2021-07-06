@@ -125,5 +125,13 @@ namespace MaintenanceTrackerMVC.Controllers
             
             return RedirectToAction("Index");
         }
+
+        public ActionResult GetFuelUpRecord(int id)
+        {
+            var service = CreateVehicleService();
+            var model = service.GetFuelUpHistory(id);
+            ViewBag.VehicleId = id;
+            return View(model);
+        }
     }
 }

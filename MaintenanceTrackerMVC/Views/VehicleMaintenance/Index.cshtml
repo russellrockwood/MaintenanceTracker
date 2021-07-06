@@ -24,9 +24,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.VehicleMaintenanceId)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.VehicleId)
         </th>
         <th>
@@ -41,9 +38,6 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.VehicleMaintenanceId)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.VehicleId)
             </td>

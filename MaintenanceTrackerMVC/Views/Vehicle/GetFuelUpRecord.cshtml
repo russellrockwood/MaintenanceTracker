@@ -1,0 +1,74 @@
+﻿@model IEnumerable<MaintenanceTracker.Data.FuelUp>
+
+@using MaintenanceTracker.Data
+
+@{
+    ViewBag.Title = "GetFuelUpRecord";
+}
+
+<h2>Fuel Up History</h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Miles)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gallons)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mpg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedUtc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedUtc)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Miles)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gallons)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mpg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedUtc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedUtc)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.FuelUpId }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.VehicleId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.FuelUpId })
+                </td>*@
+        </tr>
+
+    }
+
+</table>
+<p> @Html.ActionLink("Back to vehicle", "Details", new { id=ViewBag.VehicleId })</p>

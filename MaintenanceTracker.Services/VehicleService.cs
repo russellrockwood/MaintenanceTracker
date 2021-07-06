@@ -1,5 +1,6 @@
 ﻿using MaintenanceTracker.Data;
 using MaintenanceTracker.Models;
+using MaintenanceTracker.Models.FuelUp;
 using MaintenanceTrackerMVC.Data;
 using System;
 using System.Collections.Generic;
@@ -90,8 +91,49 @@ namespace MaintenanceTracker.Services
                         Displacement = entity.Displacement,
                         IsAutomatic = entity.IsAutomatic,
                         Odometer = entity.Odometer,
-                        FuelEconomy = entity.FuelEconomy
+                        FuelEconomy = entity.FuelEconomy,
+                        //MaintenanceRecord = entity.MaintenanceRecord
+                        //FuelUps = entity.FuelUps
+                        //.Select(e => new Models.FuelUp.FuelUpDetail()
+                        //{
+                        //    FuelUpId = e.FuelUpId,
+                        //    VehicleId = e.VehicleId,
+                        //    Price = e.Price,
+                        //    Miles = e.Miles,
+                        //    Gallons = e.Gallons,
+                        //    CreatedUtc = e.CreatedUtc,
+                        //    ModifiedUtc = e.ModifiedUtc,
+                        //    Mpg = e.Mpg
+
+                        //}).ToList(),
+                        
                     };
+            }
+        }
+
+        public IEnumerable<FuelUp> GetFuelUpHistory(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Vehicles
+                        .Single(e => e.VehicleId == id && e.OwnerId == _userId);
+                
+                return entity.FuelUps.ToList();
+            }
+        }
+
+        public IEnumerable<VehicleMaintenance> GetMaintenanceHistory(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Vehicles
+                        .Single(e => e.VehicleId == id && e.OwnerId == _userId);
+
+                return entity.MaintenanceRecord.ToList();
             }
         }
 
