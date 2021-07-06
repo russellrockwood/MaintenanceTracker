@@ -97,6 +97,7 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.VehicleId }) |
     @Html.ActionLink("Back to List", "Index") |
-    @Html.ActionLink("Fuel Up History", "GetFuelUpRecord", new { id = Model.VehicleId })
+    @Html.ActionLink("Fuel Up History", "GetFuelUpRecord", new { id = Model.VehicleId })|
+    @Html.ActionLink("Service Record", "GetMaintenanceRecord", new { id = Model.VehicleId })
 </p>
 

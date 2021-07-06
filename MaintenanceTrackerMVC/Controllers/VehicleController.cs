@@ -133,5 +133,13 @@ namespace MaintenanceTrackerMVC.Controllers
             ViewBag.VehicleId = id;
             return View(model);
         }
+        
+        public ActionResult GetMaintenanceRecord(int id)
+        {
+            var service = CreateVehicleService();
+            var model = service.GetMaintenanceHistory(id);
+            ViewBag.VehicleId = id;
+            return View(model);
+        }
     }
 }
