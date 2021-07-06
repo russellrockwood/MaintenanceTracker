@@ -1,4 +1,5 @@
-﻿using MaintenanceTracker.Models.VehicleMaintenance;
+﻿using MaintenanceTracker.Data;
+using MaintenanceTracker.Models.VehicleMaintenance;
 using MaintenanceTracker.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -12,21 +13,37 @@ namespace MaintenanceTrackerMVC.Controllers
     [Authorize]
     public class VehicleMaintenanceController : Controller
     {
-        private VehicleMaintenanceService CreateVehicleService()
+        private VehicleMaintenanceService CreateVehicleMaintenanceService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new VehicleMaintenanceService(userId);
             return service;
         }
+
+        private VehicleService CreateVehicleService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new VehicleService(userId);
+            return service;
+        }
+
         // GET: VehicleMaintenance
         public ActionResult Index()
         {
-            var vehicleMaintenanceList = CreateVehicleService().GetVehicleMaintenanceList();
+            var vehicleMaintenanceList = CreateVehicleMaintenanceService().GetVehicleMaintenanceList();
             return View(vehicleMaintenanceList);
         }
 
         public ActionResult Create()
         {
+            var vehicleService = CreateVehicleService();
+            List<Vehicle> Vehicles = vehicleService.GetVehiclesList().ToList();
+            ViewBag.VehicleId = Vehicles.Select(v => new SelectListItem()
+            {
+                Value = v.VehicleId.ToString(),
+                Text = v.VehicleModel,
+                //Selected = detail.VehicleId == v.VehicleId
+            });
             return View();
         }
 
@@ -39,7 +56,7 @@ namespace MaintenanceTrackerMVC.Controllers
                 return View(model);
             }
 
-            var service = CreateVehicleService();
+            var service = CreateVehicleMaintenanceService();
 
             if (service.CreateVehicleMaintenance(model))
             {
@@ -53,13 +70,23 @@ namespace MaintenanceTrackerMVC.Controllers
 
         public ActionResult Details(int id)
         {
-            var model = CreateVehicleService().GetVehicleMaintenanceById(id);
+            var model = CreateVehicleMaintenanceService().GetVehicleMaintenanceById(id);
             return View(model);
         }
 
         public ActionResult Edit(int id)
         {
-            var detail = CreateVehicleService().GetVehicleMaintenanceById(id);
+            var detail = CreateVehicleMaintenanceService().GetVehicleMaintenanceById(id);
+
+
+            var vehicleService = CreateVehicleService();
+            List<Vehicle> Vehicles = vehicleService.GetVehiclesList().ToList();
+            ViewBag.VehicleId = Vehicles.Select(v => new SelectListItem()
+            {
+                Value = v.VehicleId.ToString(),
+                Text = v.VehicleModel,
+                Selected = detail.VehicleId == v.VehicleId
+            });
 
             var model = new VehicleMaintenanceEdit
             {
@@ -86,7 +113,7 @@ namespace MaintenanceTrackerMVC.Controllers
                 return View(model);
             }
 
-            var service = CreateVehicleService();
+            var service = CreateVehicleMaintenanceService();
 
             if (service.UpdateVehicleMaintenance(model))
             {
@@ -101,7 +128,7 @@ namespace MaintenanceTrackerMVC.Controllers
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
-            var service = CreateVehicleService();
+            var service = CreateVehicleMaintenanceService();
             var model = service.GetVehicleMaintenanceById(id);
             return View(model);
         }
@@ -111,7 +138,7 @@ namespace MaintenanceTrackerMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteVehicleMaintenance(int id)
         {
-            CreateVehicleService().RemoveVehicleMaintenance(id);
+            CreateVehicleMaintenanceService().RemoveVehicleMaintenance(id);
             TempData["SaveResult"] = "Vehicle Maintenance Item Removed";
             return RedirectToAction("Index");
         }

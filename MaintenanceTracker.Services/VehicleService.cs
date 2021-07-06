@@ -61,6 +61,17 @@ namespace MaintenanceTracker.Services
             }
         }
 
+        public IEnumerable<Vehicle> GetVehiclesList()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return ctx
+                        .Vehicles
+                        .Where(e => e.OwnerId == _userId)
+                        .ToList();
+            }
+        }
+
         public VehicleDetail GetVehicleById(int id)
         {
             using (var ctx = new ApplicationDbContext())

@@ -1,4 +1,5 @@
-﻿using MaintenanceTracker.Models.FuelUp;
+﻿using MaintenanceTracker.Data;
+using MaintenanceTracker.Models.FuelUp;
 using MaintenanceTracker.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -18,6 +19,12 @@ namespace MaintenanceTrackerMVC.Controllers
             var service = new FuelUpService(userId);
             return service;
         }
+        private VehicleService CreateVehicleService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new VehicleService(userId);
+            return service;
+        }
         // GET: FuelUp
         public ActionResult Index()
         {
@@ -27,6 +34,17 @@ namespace MaintenanceTrackerMVC.Controllers
 
         public ActionResult Create()
         {
+            //var userId = Guid.Parse(User.Identity.GetUserId());
+            //var service = new VehicleService(userId);
+            var service = CreateVehicleService();
+            List<Vehicle> Vehicles = service.GetVehiclesList().ToList();
+            var query = from v in Vehicles
+                        select new SelectListItem()
+                        {
+                            Value = v.VehicleId.ToString(),
+                            Text = v.VehicleModel
+                        };
+            ViewBag.VehicleId = query.ToList();
             return View();
         }
 
@@ -58,6 +76,16 @@ namespace MaintenanceTrackerMVC.Controllers
         public ActionResult Edit(int id)
         {
             var detail = CreateFuelUpService().GetFuelUpById(id);
+
+            var vehicleService = CreateVehicleService();
+            List<Vehicle> Vehicles = vehicleService.GetVehiclesList().ToList();
+            ViewBag.VehicleId = Vehicles.Select(v => new SelectListItem()
+            {
+                Value = v.VehicleId.ToString(),
+                Text = v.VehicleModel,
+                Selected = detail.VehicleId == v.VehicleId
+            });
+
             var model =
                 new FuelUpEdit
                 {
