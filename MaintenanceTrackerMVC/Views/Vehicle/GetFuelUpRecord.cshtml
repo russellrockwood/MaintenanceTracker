@@ -10,7 +10,8 @@
 
 <span>Total Spent on Fuel: $@(Model.Sum(p => p.Price).ToString())</span>
 <br />
-<span>Average Fuel Economy: @(Math.Round((Model.Sum(p => p.Price) / (decimal)Model.Count()), 2).ToString()) Mpg</span>
+<span>Average Fuel Economy: @(Math.Round((Model.Sum(p => p.Mpg) / Model.Count()), 2).ToString()) Mpg</span> <br />
+
 <br />
 <br />
 

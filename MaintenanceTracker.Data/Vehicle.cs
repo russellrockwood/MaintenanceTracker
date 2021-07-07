@@ -47,7 +47,7 @@ namespace MaintenanceTracker.Data
                     combinedMpg += item.Mpg;
                 }
 
-                return combinedMpg / FuelUps.Count;
+                return Math.Round(combinedMpg / FuelUps.Count, 2);
             }
         }
 
