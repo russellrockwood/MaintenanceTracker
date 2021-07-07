@@ -8,14 +8,17 @@
 
 <h2>Fuel Up History</h2>
 
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
+<span>Total Spent on Fuel: $@(Model.Sum(p => p.Price).ToString())</span>
+<br />
+<span>Average Fuel Economy: @(Math.Round((Model.Sum(p => p.Price) / (decimal)Model.Count()), 2).ToString()) Mpg</span>
+<br />
+<br />
+
+<p>
+    @Html.ActionLink("Add Fuel Stop", "Create", "FuelUp")
+</p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.VehicleId)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
@@ -41,9 +44,6 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.VehicleId)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
@@ -61,14 +61,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ModifiedUtc)
             </td>
-            <td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.FuelUpId }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.VehicleId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.FuelUpId })
-                </td>
         </tr>
 
     }
 
 </table>
-<p> @Html.ActionLink("Back to vehicle", "Details", new { id=ViewBag.VehicleId })</p>
+<p> @Html.ActionLink("Back to Vehicles", "Index", "Vehicle")</p>

@@ -130,6 +130,7 @@ namespace MaintenanceTrackerMVC.Controllers
         {
             var service = CreateVehicleService();
             var model = service.GetFuelUpHistory(id);
+
             ViewBag.VehicleId = id;
             return View(model);
         }
@@ -138,7 +139,9 @@ namespace MaintenanceTrackerMVC.Controllers
         {
             var service = CreateVehicleService();
             var model = service.GetMaintenanceHistory(id);
+
             ViewBag.VehicleId = id;
+
             return View(model);
         }
     }

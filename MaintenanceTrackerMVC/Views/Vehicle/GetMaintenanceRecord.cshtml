@@ -6,8 +6,15 @@
 
 <h2>Maintenance Record</h2>
 
+
+@*<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>*@
+
+<span>Total Spent on Maintenance: $@(Model.Sum(p => p.Price).ToString())</span>
+<br />
+<br />
+
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add Service", "Create", "VehicleMaintenance")
 </p>
 <table class="table">
     <tr>
@@ -26,27 +33,29 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaintenanceName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShopName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Notes)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.VehicleMaintenanceId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.VehicleMaintenanceId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.VehicleMaintenanceId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaintenanceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShopName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.VehicleMaintenanceId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.VehicleMaintenanceId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.VehicleMaintenanceId })
+            </td>*@
+        </tr>
+    }
+
 
 </table>
-<p> @Html.ActionLink("Back to vehicle", "Details", new { id = ViewBag.VehicleId })</p>
+<p> @Html.ActionLink("Back to Vehicles", "Index", "Vehicle")</p>

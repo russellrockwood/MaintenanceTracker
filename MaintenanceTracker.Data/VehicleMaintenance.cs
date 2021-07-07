@@ -30,10 +30,5 @@ namespace MaintenanceTracker.Data
 
         public string Notes { get; set; }
 
-        //public DateTimeOffset ServiceDate { get; set; }
-        //public int Odometer { get; set; }
-
-
-
     }
 }

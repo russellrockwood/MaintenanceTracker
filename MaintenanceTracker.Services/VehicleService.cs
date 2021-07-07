@@ -91,22 +91,7 @@ namespace MaintenanceTracker.Services
                         Displacement = entity.Displacement,
                         IsAutomatic = entity.IsAutomatic,
                         Odometer = entity.Odometer,
-                        FuelEconomy = entity.FuelEconomy,
-                        //MaintenanceRecord = entity.MaintenanceRecord
-                        //FuelUps = entity.FuelUps
-                        //.Select(e => new Models.FuelUp.FuelUpDetail()
-                        //{
-                        //    FuelUpId = e.FuelUpId,
-                        //    VehicleId = e.VehicleId,
-                        //    Price = e.Price,
-                        //    Miles = e.Miles,
-                        //    Gallons = e.Gallons,
-                        //    CreatedUtc = e.CreatedUtc,
-                        //    ModifiedUtc = e.ModifiedUtc,
-                        //    Mpg = e.Mpg
-
-                        //}).ToList(),
-                        
+                        FuelEconomy = entity.FuelEconomy,                        
                     };
             }
         }
