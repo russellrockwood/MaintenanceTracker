@@ -5,7 +5,7 @@
 <div class="jumbotron">
     <h1>Vehicle Maintenance Tracker</h1>
     <p class="lead">Track service, repairs and fuel economy with the touch of a button. Great for personal and professional drivers, or anyone managing a small motorpool.</p>
-    <p><a class="btn btn-primary btn-lg" @Html.ActionLink("About >>", "About", "Home")</a></p>
+    <p><a class="btn btn-primary btn-lg" @Html.ActionLink("Learn More >", "About", "Home")></a></p>
 </div>
 
 <div class="row">
@@ -13,23 +13,21 @@
         <h2>Vehicles</h2>
         <img src="~/Images/vehicle.jpg" class="card-img-top" alt="Vehicle Icon" style="width: 20rem;">
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            Store a detailed list of your motor vehicles. By staying on top of your maintenance schedule, you will be preventing larger issues which could keep your car from running.
         </p>
 
-        <p><a class="btn btn-primary btn-group" @Html.ActionLink("Vehicles", "Index", "Vehicle")</a></p>
+        <a class="btn btn-primary btn-group" @Html.ActionLink("Vehicles", "Index", "Vehicle")></a>
     </div>
     <div class="col-md-4">
         <h2>Add Fuel Stop</h2>
         <img src="~/Images/fuelPump.jpg" alt="Vehicle Icon" style="width: 12rem;">
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-primary btn-group" @Html.ActionLink("Fuel Up", "Create", "FuelUp")</a></p>
+        <p>It is important to know how much fuel your vehicle is using and why. A fuel tracking system helps you gain insight into driver behavior, vehicle condition, or fleet operations as a whole.</p>
+        <p><a class="btn btn-primary btn-group" @Html.ActionLink("Fuel Up", "Create", "FuelUp")></a></p>
     </div>
     <div class="col-md-4">
         <h2>Add Vehicle Service</h2>
         <img src="~/Images/service.jpg" alt="Vehicle Icon" style="width: 15rem;">
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-primary btn-group" @Html.ActionLink("Add Service", "Create", "VehicleMaintenance")</a></p>
+        <p>Tracking vehicle maintenance and repairs can easily provide you with a snapshot of what is coming due, what it will cost, and how you and you can best be prepared.</p>
+        <p><a class="btn btn-primary btn-group" @Html.ActionLink("Add Service", "Create", "VehicleMaintenance")></a></p>
     </div>
 </div>

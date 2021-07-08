@@ -191,6 +191,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\addViewVehicle.jpg" />
+    <Content Include="Images\clickAll.jpg" />
+    <Content Include="Images\enterInfo.jpg" />
     <Content Include="Images\fuelPump.jpg" />
     <Content Include="Images\service.jpg" />
     <Content Include="Images\vehicle.jpg" />

@@ -34,8 +34,6 @@ namespace MaintenanceTrackerMVC.Controllers
 
         public ActionResult Create()
         {
-            //var userId = Guid.Parse(User.Identity.GetUserId());
-            //var service = new VehicleService(userId);
             var service = CreateVehicleService();
             List<Vehicle> Vehicles = service.GetVehiclesList().ToList();
             var query = from v in Vehicles
