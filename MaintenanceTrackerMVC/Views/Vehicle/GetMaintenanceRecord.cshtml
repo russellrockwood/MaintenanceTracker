@@ -16,22 +16,25 @@
 <p>
     @Html.ActionLink("Add Service", "Create", "VehicleMaintenance")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.MaintenanceName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShopName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Notes)
-        </th>
-        <th></th>
-    </tr>
+<table class="table table-striped table-hover">
+    <thead>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaintenanceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShopName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
 
     @foreach (var item in Model)
     {
@@ -49,10 +52,10 @@
                 @Html.DisplayFor(modelItem => item.Notes)
             </td>
             @*<td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.VehicleMaintenanceId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.VehicleMaintenanceId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.VehicleMaintenanceId })
-            </td>*@
+                    @Html.ActionLink("Edit", "Edit", new { id = item.VehicleMaintenanceId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.VehicleMaintenanceId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.VehicleMaintenanceId })
+                </td>*@
         </tr>
     }
 

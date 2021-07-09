@@ -10,7 +10,8 @@
 
 <span>Total Spent on Fuel: $@(Model.Sum(p => p.Price).ToString())</span>
 <br />
-<span>Average Fuel Economy: @(Math.Round((Model.Sum(p => p.Mpg) / Model.Count()), 2).ToString()) Mpg</span> <br />
+<span>Average Fuel Economy: @(Math.Round((Model.Sum(p => p.Mpg) / Model.Count()), 2).ToString()) Mpg</span>
+<br />
 
 <br />
 <br />
@@ -18,28 +19,31 @@
 <p>
     @Html.ActionLink("Add Fuel Stop", "Create", "FuelUp")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Miles)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gallons)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Mpg)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedUtc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedUtc)
-        </th>
-        <th></th>
-    </tr>
+<table class="table table-striped table-hover">
+    <thead>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Miles)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gallons)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mpg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedUtc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedUtc)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
 
     @foreach (var item in Model)
     {

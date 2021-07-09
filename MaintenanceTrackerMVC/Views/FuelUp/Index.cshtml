@@ -21,35 +21,31 @@
     </div>
 }
 
-<table class="table">
-    <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.FuelUpId)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.VehicleId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gallons)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedUtc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedUtc)
-        </th>
-        <th></th>
-    </tr>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gallons)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedUtc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedUtc)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
 
     @foreach (var item in Model)
     {
         <tr>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.FuelUpId)
-            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.VehicleId)
             </td>
