@@ -56,7 +56,8 @@ From the vehicles page you can check the fuel up and service records for each ve
 
 The following features can be further expanded upon to increase functionality of the application:
 - Add OBD code interpreter (In Progress)
-- Improvement of existing features and addition of new features
+- Reminders for routine maintenance
+- Improvement of existing features and UX/UI
 
 
 ## Acknowledgements
