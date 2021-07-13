@@ -6,6 +6,7 @@
 * [Usage](#usage)
 * [Technologies Used](#technologies-used)
 * [Featured Applications](#featured-applications)
+* [Room For Improvement](#room-for-improvement)
 * [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
 
