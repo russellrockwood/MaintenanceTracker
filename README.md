@@ -6,9 +6,8 @@
 * [Usage](#usage)
 * [Technologies Used](#technologies-used)
 * [Featured Applications](#featured-applications)
-* [Project Status](#project-status)
 * [Acknowledgements](#acknowledgements)
-* [Collaborators](#collaborators)
+* [Contact](#contact)
 
 
 ## General Information
