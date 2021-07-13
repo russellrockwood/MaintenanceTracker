@@ -12,7 +12,7 @@
 
 
 ## General Information
-This solution contains a .NET Framework API Web Application using n-tier architecture: 
+This solution contains a .NET Framework MVC 5 Web Application using n-tier architecture:
 - Layers include: Data, Models, Services, WebMVC
 - Utilizes custom data tables with foreign key relationships
 - Manage vehicles, fuel stops, track maintenance, and view trends
