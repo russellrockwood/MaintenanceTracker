@@ -46,31 +46,24 @@ From the vehicles page you can check the fuel up and service records for each ve
 
  - View fuel stop history and trends over time.
 
- <img src="https://github.com/russellrockwood/EventWarez/blob/russell/EventWarez.WebAPI/Images/createStaff.jpg" width="777" /> 
+ <img src="https://github.com/russellrockwood/MaintenanceTracker/blob/master/MaintenanceTrackerMVC/Images/fuelUpHistory.jpg" width="777" /> 
  
- - Create show tickets and add attendees
+ - View service records and track costs of maintenance per vehicle.
  
- <img src="https://github.com/russellrockwood/EventWarez/blob/russell/EventWarez.WebAPI/Images/addTicketToShow.jpg" width="777" /> 
-
- - View tickets by show
- 
- <img src="https://github.com/russellrockwood/EventWarez/blob/russell/EventWarez.WebAPI/Images/viewTicketsByShowId.jpg" width="500" /> 
+ <img src="https://github.com/russellrockwood/MaintenanceTracker/blob/master/MaintenanceTrackerMVC/Images/maintenanceRecord.jpg" width="777" /> 
 
 ## Room for Improvement
 
-The following features can be further expanded upon to increase functionality of the applications:
-- Improvement to bad request error handling 
-- Addition of a console application 
+The following features can be further expanded upon to increase functionality of the application:
+- Add OBD code interpreter (In Progress)
 - Improvement of existing features and addition of new features
 
 
 ## Acknowledgements
 - This project was inspired by an EFA Assignment Prompt
-- This project was based on [this prompt](https://elevenfifty.instructure.com/courses/696/assignments/13550?module_item_id=58753).
+- This project was based on [this prompt](https://elevenfifty.instructure.com/courses/724/assignments/14570?module_item_id=62407).
 - Many thanks to Michael Pabody, Jacob Brown, Andrew Torr, Justin Scroggins, Adam Metcalf, Brian Campassi and all EFA staff and faculty available for consultation in the Learning Gym and elsewhere
 
 
-## Collaborators
-- Ryan Dibble dibzthedibz@gmail.com
-- Samuel Perry  snperry89@gmail.com 
+## Contact
 - Russell Rockwood  russell.rockwood@gmail.com
